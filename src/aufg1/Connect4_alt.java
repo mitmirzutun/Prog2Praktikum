@@ -1,8 +1,6 @@
 package aufg1;
 public class Connect4_alt {
-	/*
-	 * Array pos saves the position of the tokens, with following assignment: pos[line][column]
-	 * */
+	//Array pos saves the position of the tokens, with following assignment: pos[line][column]
     private char pos[][]=new char[8][8],empty='.',player1='X',player2='O';
     private boolean player1Turn=true;
     private boolean gameEnded=false;
