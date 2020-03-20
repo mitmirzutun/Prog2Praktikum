@@ -74,7 +74,9 @@ public class Connect4{
     */
     public static byte winner() {
         for (int i=0;i<data.length;i++) {
-        	for (int j=0;j<data.length&&data[i][j+3][0];j++) {
+        	for (int j=0;j+3<data.length;j++) {
+        		if (!data[i][j+3][0])
+        			continue;
         		if (data[i][j][1]==data[i][j+1][1]&&
         			data[i][j][1]==data[i][j+2][1]&&
         			data[i][j][1]==data[i][j+3][1]) {
@@ -83,8 +85,9 @@ public class Connect4{
         	}
         }
         for (int i=0;i+3<data.length;i++) {
-        	for (int j=0;j<data.length&&data[i][j][0]&&data[i+1][j][0]
-        			&&data[i+2][j][0]&&data[i+3][j][0];j++) {
+        	for (int j=0;j<data.length;j++) {
+        		if (!data[i+3][j][0])
+        			continue;
         		if (data[i][j][1]==data[i+1][j][1]&&
             		data[i][j][1]==data[i+2][j][1]&&
             		data[i][j][1]==data[i+3][j][1]) {
@@ -93,16 +96,18 @@ public class Connect4{
         	}
         }
         for (int i=0;i+3<data.length;i++) {
-        	for (int j=0;j<data.length&&data[i][j][0]&&data[i+1][j+1][0]
-        			&&data[i+2][j+2][0]&&data[i+3][j+3][0];j++) {
+        	for (int j=0;j+3<data.length;j++) {
+        		if (!data[i][j][0]||!data[i+1][j+1][0]||!data[i+2][j+2][0]||!data[i+3][j+3][0])
+        			continue;
         		if (data[i][j][1]==data[i+1][j+1][1]&&
                 	data[i][j][1]==data[i+2][j+2][1]&&
                 	data[i][j][1]==data[i+3][j+3][1]) {
             		return (byte)(data[i][j][1]?2:1);
             	}
         	}
-        	for (int j=0;j<data.length&&data[i][j+3][0]&&data[i+1][j+2][0]
-        			&&data[i+2][j+1][0]&&data[i+3][j][0];j++) {
+        	for (int j=0;j+3<data.length;j++) {
+        		if (!data[i][j+3][0]||!data[i+1][j+2][0]||!data[i+2][j+1][0]||!data[i+3][j][0])
+        			continue;
         		if (data[i][j+3][1]==data[i+1][j+2][1]&&
                 	data[i][j+3][1]==data[i+2][j+1][1]&&
                 	data[i][j+3][1]==data[i+3][j][1]) {
