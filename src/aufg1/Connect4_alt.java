@@ -160,6 +160,6 @@ public class Connect4_alt {
                 }
             }
         }
-        return "Tie!";
+        return null;
     }
 }
