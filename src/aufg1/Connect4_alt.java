@@ -1,14 +1,13 @@
 package aufg1;
-import java.io.IOException;
 public class Connect4_alt {
     private char pos[][]=new char[8][8],empty='.',player1='X',player2='O';
     private boolean player1Turn=true;
     private boolean gameEnded=false;
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws Exception {
         Connect4_alt m = new Connect4_alt();
         m.start();
     }
-    public void start() throws IOException {
+    public void start() throws Exception {
         for (int i=0;i<8;i++)
             for (int j=0;j<8;j++)
                 pos[i][j]=empty;
@@ -16,7 +15,7 @@ public class Connect4_alt {
         while (!gameEnded)
             this.game();
     }
-    private void game() throws IOException {
+    private void game() throws Exception {
         display();
         if (gameEnded)
         	return;
@@ -54,7 +53,7 @@ public class Connect4_alt {
             }
         }
         if (pos[0][c-'1']!=empty) {
-            System.out.println("Row full");
+            System.out.println("Column full");
             return;
         }
         for (int i =7;i>=0;i--) 
@@ -70,7 +69,7 @@ public class Connect4_alt {
     public String toString() {
     	if (gameEnded)
     		return winner();
-    	StringBuilder sb= new StringBuilder(197);
+    	StringBuilder sb= new StringBuilder(200);
     	for (int i=1;i<=8;i++) {
     		sb.append(i);
     		sb.append(' ');
@@ -96,9 +95,22 @@ public class Connect4_alt {
     	sb.append("Turn of Player ");
     	sb.append(player1Turn?player1:player2);
     	sb.append('\n');
+    	sb.append('>');
     	return sb.toString();
     }
     private String winner() {
+    	{
+    		boolean allFull=true;
+    		for (int i=0;i<pos[0].length;i++) {
+    			if (pos[0][i]==empty) {
+    				allFull=false;
+    			}
+    		}
+    		if (allFull) {
+    			gameEnded=true;
+    			return "Tie!";
+    		}
+    	}
     	String pl1won,pl2won;
     	{
     		StringBuilder tmp = new StringBuilder(16);
