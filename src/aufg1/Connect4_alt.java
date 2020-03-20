@@ -54,7 +54,7 @@ public class Connect4_alt {
             }
         }
         if (pos[0][c-'1']!=empty) {
-            System.out.println("Reihe bereits voll");
+            System.out.println("Row full");
             return;
         }
         for (int i =7;i>=0;i--) 
