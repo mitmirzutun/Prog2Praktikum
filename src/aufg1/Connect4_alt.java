@@ -6,7 +6,9 @@ public class Connect4_alt {
     private boolean gameEnded=false;
     public static void main(String[] args) throws Exception {
         Connect4_alt m = new Connect4_alt();
-        m.start();
+    }
+    public Connect4_alt() throws Exception {
+    	this.start();
     }
     public void start() throws Exception {
     	// Initializes the pos array
