@@ -6,7 +6,7 @@ public class Connect4_alt {
     private boolean gameEnded=false;
     public static void main(String[] args) throws Exception {
         Connect4_alt m = new Connect4_alt();
-        m.start();
+	      m.start();
     }
     public void start() throws Exception {
     	// Initializes the pos array
@@ -14,6 +14,7 @@ public class Connect4_alt {
             for (int column=0;column<8;column++)
                 pos[line][column]=empty;
         gameEnded=false;
+	    
         // checks if the game has ended. If not, call game()
         while (!gameEnded)
             this.game();
