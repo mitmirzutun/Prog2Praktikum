@@ -1,7 +1,7 @@
 package aufg1;
 public class Connect4_alt {
 	//Array pos saves the position of the tokens, with following assignment: pos[line][column]
-    private char pos[][],empty='.',player1='X',player2='O';
+    private char pos[][]=new char[8][8],empty='.',player1='X',player2='O';
     private boolean player1Turn=true;
     private boolean gameEnded=false;
     public static void main(String[] args) throws Exception {
@@ -12,7 +12,6 @@ public class Connect4_alt {
     }
     public void start() throws Exception {
     	// Initializes the pos array
-    	pos=new char[8][8];
         for (int line=0;line<8;line++)
             for (int column=0;column<8;column++)
                 pos[line][column]=empty;
