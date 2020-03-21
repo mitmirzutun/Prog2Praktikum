@@ -14,6 +14,7 @@ public class Connect4_alt {
             for (int column=0;column<8;column++)
                 pos[line][column]=empty;
         gameEnded=false;
+	    
         // checks if the game has ended. If not, call game()
         while (!gameEnded)
             this.game();
