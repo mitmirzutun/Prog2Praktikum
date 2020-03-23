@@ -41,10 +41,11 @@ public class Connect4{
     }
     private static void player(int player)throws Exception{
         System.out.println("Player "+ player +" ist am Zug");
-		System.out.println("Wähle Spalte 1-8");
+		System.out.println("Waehle Spalte 1-8");
 		int input = System.in.read();
 		while(System.in.read()!='\n'){}
 		input -= 49;
+		if(0 > input || input > 7){System.out.println("Error");player(player);return;}
 
 		for (int a=7;a>=0  ;a-- ) {//Zeilen von 8 bis 0
 			if (data[a][input][0] == true){
