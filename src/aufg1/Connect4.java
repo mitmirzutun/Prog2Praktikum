@@ -120,3 +120,48 @@ public class Connect4{
         return false;
     }
 }
+class Field {
+	private Vector[] field= new Vector[8];
+	public Field() {
+		for (int i=0;i<field.length;i++)
+			field[i]=new Vector();
+	}
+}
+class Vector {
+	private char tokens[];
+	public Vector() {
+		tokens=new char[0];
+	}
+	public Vector(Vector v) {
+		tokens=v.tokens.clone();
+	}
+	public Vector newToken(char token) {
+		if (tokens.length==8||won())
+			throw new ArrayIndexOutOfBoundsException();
+		Vector v=new Vector();
+		v.tokens=new char[tokens.length+1];
+		for (int i=0;i<tokens.length;i++)
+			v.tokens[i]=tokens[i];
+		v.tokens[tokens.length]=token;
+		return v;
+	}
+	public int length() {
+		return tokens.length;
+	}
+	public char[] getTokens() {
+		return tokens.clone();
+	}
+	public char winner() {
+		for (int i=0;i+3<tokens.length;i++) {
+			if (tokens[i]==tokens[i+1]&&tokens[i+2]==tokens[i+3]&&tokens[i+1]==tokens[i+2])
+				return tokens[i];
+		} return 0;
+	}
+	public boolean won() {
+		for (int i=0;i+3<tokens.length;i++) {
+			if (tokens[i]==tokens[i+1]&&tokens[i+2]==tokens[i+3]&&tokens[i+1]==tokens[i+2])
+				return true;
+		} return false;
+		
+	}
+}
