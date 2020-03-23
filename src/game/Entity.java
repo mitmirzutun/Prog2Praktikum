@@ -2,13 +2,9 @@ package game;
 
 import java.math.BigInteger;
 
-public class Entity {
-	protected BigInteger energy, position[]= {BigInteger.ZERO,BigInteger.ZERO};
+public abstract class Entity {
+	protected BigInteger energy, position[]={BigInteger.ZERO,BigInteger.ZERO};
 	public static void main(String[] args) {
-		long[] l= new long[5];
-		l[0]=1;
-		Entity e = new Entity();
-		e.setPosition(l);
 	}
 	public void setEnergy(long energy) {
 		this.energy=BigInteger.valueOf(energy);
@@ -46,6 +42,9 @@ public class Entity {
 		"Got position argument of length "+pos.length);
 		position=pos.clone();
 	}
+	public BigInteger getEnergy() {
+		return energy;
+	}
 	public BigInteger[] getPosition() {
 		return position.clone();
 	}
@@ -55,4 +54,8 @@ public class Entity {
 	public BigInteger getY() {
 		return position[1];
 	}
+	public abstract String toString();
+	public abstract Entity clone();
+	public abstract boolean equals(Object o);
+	public abstract void nextStep();
 }
