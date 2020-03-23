@@ -41,11 +41,10 @@ public class Connect4{
     }
     private static void player(int player)throws Exception{
         System.out.println("Player "+ player +" ist am Zug");
-		System.out.println("Waehle Spalte 1-8");
+		System.out.println("Wähle Spalte 1-8");
 		int input = System.in.read();
 		while(System.in.read()!='\n'){}
 		input -= 49;
-		if(0 > input || input > 7){System.out.println("Error");player(player);return;}
 
 		for (int a=7;a>=0  ;a-- ) {//Zeilen von 8 bis 0
 			if (data[a][input][0] == true){
@@ -75,9 +74,7 @@ public class Connect4{
     */
     public static byte winner() {
         for (int i=0;i<data.length;i++) {
-        	for (int j=0;j+3<data.length;j++) {
-        		if (!data[i][j+3][0])
-        			continue;
+        	for (int j=0;j<data.length&&data[i][j+3][0];j++) {
         		if (data[i][j][1]==data[i][j+1][1]&&
         			data[i][j][1]==data[i][j+2][1]&&
         			data[i][j][1]==data[i][j+3][1]) {
@@ -86,9 +83,8 @@ public class Connect4{
         	}
         }
         for (int i=0;i+3<data.length;i++) {
-        	for (int j=0;j<data.length;j++) {
-        		if (!data[i+3][j][0])
-        			continue;
+        	for (int j=0;j<data.length&&data[i][j][0]&&data[i+1][j][0]
+        			&&data[i+2][j][0]&&data[i+3][j][0];j++) {
         		if (data[i][j][1]==data[i+1][j][1]&&
             		data[i][j][1]==data[i+2][j][1]&&
             		data[i][j][1]==data[i+3][j][1]) {
@@ -97,18 +93,16 @@ public class Connect4{
         	}
         }
         for (int i=0;i+3<data.length;i++) {
-        	for (int j=0;j+3<data.length;j++) {
-        		if (!data[i][j][0]||!data[i+1][j+1][0]||!data[i+2][j+2][0]||!data[i+3][j+3][0])
-        			continue;
+        	for (int j=0;j<data.length&&data[i][j][0]&&data[i+1][j+1][0]
+        			&&data[i+2][j+2][0]&&data[i+3][j+3][0];j++) {
         		if (data[i][j][1]==data[i+1][j+1][1]&&
                 	data[i][j][1]==data[i+2][j+2][1]&&
                 	data[i][j][1]==data[i+3][j+3][1]) {
             		return (byte)(data[i][j][1]?2:1);
             	}
         	}
-        	for (int j=0;j+3<data.length;j++) {
-        		if (!data[i][j+3][0]||!data[i+1][j+2][0]||!data[i+2][j+1][0]||!data[i+3][j][0])
-        			continue;
+        	for (int j=0;j<data.length&&data[i][j+3][0]&&data[i+1][j+2][0]
+        			&&data[i+2][j+1][0]&&data[i+3][j][0];j++) {
         		if (data[i][j+3][1]==data[i+1][j+2][1]&&
                 	data[i][j+3][1]==data[i+2][j+1][1]&&
                 	data[i][j+3][1]==data[i+3][j][1]) {
