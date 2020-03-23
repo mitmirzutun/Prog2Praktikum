@@ -3,9 +3,9 @@ package game;
 import java.math.BigInteger;
 
 public abstract class Entity {
-	protected BigInteger energy, position[]={BigInteger.ZERO,BigInteger.ZERO};
-	public static void main(String[] args) {
-	}
+	protected BigInteger energy;
+	protected XY position;
+	protected boolean constPosition;
 	public void setEnergy(long energy) {
 		this.energy=BigInteger.valueOf(energy);
 	}
@@ -13,46 +13,54 @@ public abstract class Entity {
 		this.energy=energy;
 	}
 	public void setPosition(long x, long y) {
-		setPosition(BigInteger.valueOf(x), BigInteger.valueOf(y));
+		if (constPosition)
+			throw new NoSuchMethodError("The Method setPosition(long, long) is undefined");
+		position=new XY(x,y);
 	}
 	public void setPosition(BigInteger x,long y) {
-		setPosition(x,BigInteger.valueOf(y));
+		if (constPosition)
+			throw new NoSuchMethodError("The Method setPosition(BigInteger, long) is undefined");
+		position=new XY(x,y);
 	}
 	public void setPosition(long x, BigInteger y) {
-		setPosition(BigInteger.valueOf(x),y);
+		if (constPosition)
+			throw new NoSuchMethodError("The Method setPosition(long, BigInteger) is undefined");
+		position=new XY(x,y);
 	}
 	public void setPosition(BigInteger x,BigInteger y) {
-		position=new BigInteger[2];
-		position[0]=x;
-		position[1]=y;
+		if (constPosition)
+			throw new NoSuchMethodError("The Method setPosition(BigInteger,BigInteger) is undefined");
+		position=new XY(x,y);
 	}
 	public void setPosition(long pos[]) {
-		if (pos==null)
-			throw new NullPointerException("Empty position argument");
-		if (pos.length!=2)
-			throw new RuntimeException("Expected position argument of length 2. "+
-		"Got position argument of length "+pos.length);
-		setPosition(BigInteger.valueOf(pos[0]), BigInteger.valueOf(pos[1]));
+		if (constPosition)
+			throw new NoSuchMethodError("The Method setPosition(long[]) is undefined");
+		position=new XY(pos);
 	}
 	public void setPosition(BigInteger pos[]) {
-		if (pos==null)
-			throw new NullPointerException("Empty position argument");
-		if (pos.length!=2)
-			throw new RuntimeException("Expected position argument of length 2. "+
-		"Got position argument of length "+pos.length);
-		position=pos.clone();
+		if (constPosition)
+			throw new NoSuchMethodError("The Method setPosition(BigInteger[]) is undefined");
+		position=new XY(pos);
+	}
+	public void setPosition(XY pos) {
+		if (constPosition)
+			throw new NoSuchMethodError("The Method setPosition(XY) is undefined");
+		position=new XY(pos);
 	}
 	public BigInteger getEnergy() {
 		return energy;
 	}
-	public BigInteger[] getPosition() {
+	public XY getPosition() {
 		return position.clone();
 	}
 	public BigInteger getX() {
-		return position[0];
+		return position.getX();
 	}
 	public BigInteger getY() {
-		return position[1];
+		return position.getY();
+	}
+	public int length() {
+		return this.toString().length();
 	}
 	public abstract String toString();
 	public abstract Entity clone();

@@ -1,21 +1,36 @@
 package game;
-
 import java.math.BigInteger;
-
 public class XY {
+	public static void main(String args[]) {
+	}
 	public final BigInteger[] NULL= {BigInteger.ZERO,BigInteger.ZERO};
 	private BigInteger pos[]=new BigInteger[2];
 	public XY() {
 		pos=NULL;
 	}
 	public XY(long x, long y) {
-		this(BigInteger.valueOf(x),BigInteger.valueOf(y));
+		if (x<0)
+			throw new NumberFormatException("Expected positive x, got negative x");
+		if (y<0)
+			throw new NumberFormatException("Expected positive y, got negative y");
+		pos[0]=BigInteger.valueOf(x);
+		pos[1]=BigInteger.valueOf(y);
 	}
 	public XY(long x, BigInteger y) {
-		this(BigInteger.valueOf(x),y);
+		if (x<0)
+			throw new NumberFormatException("Expected positive x, got negative x");
+		if (y.signum()<0)
+			throw new NumberFormatException("Expected positive y, got negative y");
+		pos[0]=BigInteger.valueOf(x);
+		pos[1]=y;
 	}
 	public XY(BigInteger x, long y) {
-		this(x,BigInteger.valueOf(y));
+		if (x.signum()<0)
+			throw new NumberFormatException("Expected positive x, got negative x");
+		if (y<0)
+			throw new NumberFormatException("Expected positive y, got negative y");
+		pos[0]=x;
+		pos[1]=BigInteger.valueOf(y);
 	}
 	public XY(BigInteger x,BigInteger y) {
 		if (x.signum()<0)
@@ -77,6 +92,12 @@ public class XY {
 	public XY clone() {
 		return new XY(this);
 	}
+	public BigInteger getX() {
+		return pos[0];
+	}
+	public BigInteger getY() {
+		return pos[1];
+	}
 	public boolean equals(Object o) {
 		if (o==null)
 			throw new NullPointerException("No objecto to evaluate");
@@ -90,5 +111,8 @@ public class XY {
 		sb.append("\ny=");
 		sb.append(pos[1]);
 		return sb.toString();
+	}
+	public int length() {
+		return this.toString().length();
 	}
 }
