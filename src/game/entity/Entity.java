@@ -1,6 +1,8 @@
-package game;
+package game.entity;
 
 import java.math.BigInteger;
+
+import game.position.XY;
 
 public abstract class Entity {
 	protected BigInteger energy;

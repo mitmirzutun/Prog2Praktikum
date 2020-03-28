@@ -1,4 +1,7 @@
-package game;
+package game.entity.wall;
+
+import game.entity.Entity;
+import game.position.XY;
 
 public class Wall extends Entity {
 	public Wall () {
