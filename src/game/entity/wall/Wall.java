@@ -1,18 +1,22 @@
 package game.entity.wall;
 
+import java.math.BigInteger;
+
 import game.entity.Entity;
 import game.position.XY;
 
 public class Wall extends Entity {
 	public Wall () {
+		energy=BigInteger.valueOf(-10);
 		position=new XY();
 		constPosition=true;
 	}
 	public Wall(XY pos) {
+		energy=BigInteger.valueOf(-10);
 		position=new XY(pos);
 		constPosition=true;
 	}
-	public Wall(Wall w) {
+	private Wall(Wall w) {
 		position=new XY(w.position);
 		constPosition=true;
 		energy=w.energy;

@@ -12,7 +12,7 @@ public class Plant extends Entity {
 		position = pos;
 		constPosition=true;
 	}
-	public Plant(Plant p) {
+	private Plant(Plant p) {
 		position=p.position.clone();
 		energy=p.energy;
 		constPosition=true;
@@ -33,7 +33,6 @@ public class Plant extends Entity {
 		return o instanceof Plant?this.toString().equals(o.toString()):false;
 	}
 	public void nextStep() {
-
 	}
 	public static void main(String[] args) {
 
