@@ -1,8 +1,8 @@
-package game.entity;
+package de.hsa.games.fatsquirrel.entity;
 
 import java.math.BigInteger;
 
-import game.position.XY;
+import de.hsa.games.fatsquirrel.position.XY;
 
 public abstract class Entity {
 	protected BigInteger energy;

@@ -1,6 +1,6 @@
-package game.beast;
+package de.hsa.games.fatsquirrel.beast;
 
-import game.entity.Entity;
+import de.hsa.games.fatsquirrel.entity.Entity;
 
 public class Beast extends Entity {
 	private Beast(Beast b) {

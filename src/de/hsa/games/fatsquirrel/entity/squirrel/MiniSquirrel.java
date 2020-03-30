@@ -1,18 +1,17 @@
-package game.entity.squirrel;
+package de.hsa.games.fatsquirrel.entity.squirrel;
 
-import game.entity.Entity;
-import game.position.XY;
+import de.hsa.games.fatsquirrel.position.XY;
 
-public class Squirrel extends Entity {
-	public Squirrel() {
+public class MiniSquirrel extends Squirrel {
+	public MiniSquirrel() {
 		position=new XY();
 		constPosition=false;
 	}
-	public Squirrel(XY pos) {
+	public MiniSquirrel(XY pos) {
 		position=pos;
 		constPosition=false;
 	}
-	private Squirrel(Squirrel s) {
+	private MiniSquirrel(MiniSquirrel s) {
 		position=s.position;
 		constPosition=false;
 		energy=s.energy;
@@ -24,13 +23,13 @@ public class Squirrel extends Entity {
 		sb.append(pos);
 		return sb.toString();
 	}
-	public Entity clone() {
-		return new Squirrel(this);
+	public MiniSquirrel clone() {
+		return new MiniSquirrel(this);
 	}
 	public boolean equals(Object o) {
 		if (o==null)
 			throw new NullPointerException("No object to compare to");
-		return o instanceof Squirrel?this.toString().equals(o.toString()):false;
+		return o instanceof MiniSquirrel?this.toString().equals(o.toString()):false;
 	}
 	public void nextStep() {
 		

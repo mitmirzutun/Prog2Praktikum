@@ -1,7 +1,8 @@
-package game.entity.plant;
+package de.hsa.games.fatsquirrel.entity.plant;
 
 import java.math.BigInteger;
-import game.position.XY;
+
+import de.hsa.games.fatsquirrel.position.XY;
 
 public class GoodPlant extends Plant {
 	public GoodPlant() {

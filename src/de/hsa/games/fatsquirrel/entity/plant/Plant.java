@@ -1,7 +1,7 @@
-package game.entity.plant;
+package de.hsa.games.fatsquirrel.entity.plant;
 
-import game.entity.Entity;
-import game.position.XY;
+import de.hsa.games.fatsquirrel.entity.Entity;
+import de.hsa.games.fatsquirrel.position.XY;
 
 public class Plant extends Entity {
 	public Plant() {

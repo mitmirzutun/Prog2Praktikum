@@ -1,9 +1,9 @@
-package game.entity.wall;
+package de.hsa.games.fatsquirrel.entity.wall;
 
 import java.math.BigInteger;
 
-import game.entity.Entity;
-import game.position.XY;
+import de.hsa.games.fatsquirrel.entity.Entity;
+import de.hsa.games.fatsquirrel.position.XY;
 
 public class Wall extends Entity {
 	public Wall () {

@@ -1,4 +1,4 @@
-package game;
+package de.hsa.games.fatsquirrel;
 
 public class Game {
 	public void run() {

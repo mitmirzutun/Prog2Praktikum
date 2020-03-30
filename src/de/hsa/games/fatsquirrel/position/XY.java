@@ -1,4 +1,4 @@
-package game.position;
+package de.hsa.games.fatsquirrel.position;
 import java.math.BigInteger;
 public class XY {
 	private static boolean DEBUGGING=false;

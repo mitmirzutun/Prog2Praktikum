@@ -1,4 +1,4 @@
-package game.test;
+package de.hsa.games.fatsquirrel.test;
 
 public class Test {
 	private static boolean DEBUGGING=false;
@@ -7,7 +7,7 @@ public class Test {
 		if (DEBUGGING) {
 			System.out.println(debuggingPrefix+": Testing game.position package");
 		}
-		if (!game.position.XY.testClass()) {
+		if (!de.hsa.games.fatsquirrel.position.XY.testClass()) {
 			System.out.println(debuggingPrefix+": Testing failed");
 			return false;
 		}
@@ -15,7 +15,7 @@ public class Test {
 	}
 	public static void startDebuggingAll() {
 		System.out.println(debuggingPrefix+": Call of startDebuggingAll");
-		game.position.XY.startDebugging();
+		de.hsa.games.fatsquirrel.position.XY.startDebugging();
 	}
 	public static void startDebugging() {
 		System.out.println(debuggingPrefix+" is starting debugging");
@@ -23,7 +23,7 @@ public class Test {
 	}
 	public static void stopDebuggingAll() {
 		System.out.println(debuggingPrefix+": Call of stopDebuggingAll");
-		game.position.XY.stopDebugging();
+		de.hsa.games.fatsquirrel.position.XY.stopDebugging();
 	}
 	public static void stopDebugging() {
 		System.out.println(debuggingPrefix+" is stopping debugging");

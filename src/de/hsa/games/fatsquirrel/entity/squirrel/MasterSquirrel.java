@@ -1,17 +1,22 @@
-package game.entity.squirrel;
+package de.hsa.games.fatsquirrel.entity.squirrel;
 
 import java.math.BigInteger;
+
+import de.hsa.games.fatsquirrel.position.*;
 public class MasterSquirrel extends Squirrel {
 	public MasterSquirrel() {
-		super();
+		this.position=new XY();
+		this.constPosition=false;
 		this.energy=BigInteger.valueOf(1000);
 	}
-	public MasterSquirrel(game.position.XY pos) {
-		super(pos);
+	public MasterSquirrel(de.hsa.games.fatsquirrel.position.XY pos) {
+		this.position=new XY(pos);
+		this.constPosition=false;
 		this.energy=BigInteger.valueOf(1000);
 	}
 	private MasterSquirrel(MasterSquirrel squirrel) {
-		super(squirrel.position);
+		this.position=new XY(squirrel.position);
+		this.constPosition=false;
 		this.energy=squirrel.energy;
 	}
 	public MasterSquirrel clone() {
@@ -28,5 +33,8 @@ public class MasterSquirrel extends Squirrel {
 		if (o==null)
 			throw new NullPointerException("No object to compare to");
 		return o instanceof MasterSquirrel?this.toString().equals(o.toString()):false;
+	}
+	public void nextStep() {
+		
 	}
 }
