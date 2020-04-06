@@ -1,10 +1,7 @@
 package de.hsa.games.fatsquirrel.entity.wall;
-
 import java.math.BigInteger;
-
 import de.hsa.games.fatsquirrel.entity.Entity;
 import de.hsa.games.fatsquirrel.position.XY;
-
 public class Wall extends Entity {
 	public Wall () {
 		energy=BigInteger.valueOf(-10);
@@ -38,5 +35,4 @@ public class Wall extends Entity {
 	}
 	public static void main(String[] args) {
 	}
-
 }

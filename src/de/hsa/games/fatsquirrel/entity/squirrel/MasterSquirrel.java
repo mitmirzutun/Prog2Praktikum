@@ -1,11 +1,11 @@
 package de.hsa.games.fatsquirrel.entity.squirrel;
-
 import java.math.BigInteger;
-
 import de.hsa.games.fatsquirrel.position.*;
 public class MasterSquirrel extends Squirrel {
+	/**
+	 * */
 	public MasterSquirrel() {
-		this.position=new XY();
+		this.position=new XY();//
 		this.constPosition=false;
 		this.energy=BigInteger.valueOf(1000);
 	}

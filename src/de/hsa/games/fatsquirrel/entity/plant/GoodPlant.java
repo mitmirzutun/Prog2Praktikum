@@ -6,15 +6,17 @@ import de.hsa.games.fatsquirrel.position.XY;
 
 public class GoodPlant extends Plant {
 	public GoodPlant() {
-		super();
+		this.position=new XY();
+		constPosition=false;
 		energy=BigInteger.valueOf(100);
 	}
 	public GoodPlant(XY pos) {
-		super(pos);
+		this.position=new XY(pos);
+		constPosition=false;
 		energy=BigInteger.valueOf(100);
 	}
 	private GoodPlant(GoodPlant plant) {
-		super(plant.position);
+		this(plant.position);
 		this.energy=plant.energy;
 	}
 	public GoodPlant clone() {
@@ -31,5 +33,7 @@ public class GoodPlant extends Plant {
 		if (o==null)
 			throw new NullPointerException("No object to compare to");
 		return o instanceof GoodPlant?this.toString().equals(o.toString()):false;
+	}
+	public void nextStep() {
 	}
 }
