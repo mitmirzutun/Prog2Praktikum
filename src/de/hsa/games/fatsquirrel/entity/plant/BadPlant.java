@@ -1,19 +1,21 @@
 package de.hsa.games.fatsquirrel.entity.plant;
+
 import java.math.BigInteger;
 import de.hsa.games.fatsquirrel.position.XY;
+
 public class BadPlant extends Plant {
 	public BadPlant() {
-		constPosition=false;
-		position=new XY();
-		energy=BigInteger.valueOf(-100);
+		this.constPosition = true;
+		this.position=new XY();
+		this.energy=BigInteger.valueOf(-100);
 	}
 	public BadPlant(XY pos) {
-		position=new XY(pos);
-		constPosition=false;
-		energy=BigInteger.valueOf(-100);
+		this.position=new XY(pos);
+		this.constPosition=true;
+		this.energy=BigInteger.valueOf(-100);
 	}
 	private BadPlant(BadPlant plant) {
-		this(plant.position);
+		this.position=plant.position;
 		this.energy=plant.energy;
 	}
 	public BadPlant clone() {

@@ -1,6 +1,6 @@
 package de.hsa.games.fatsquirrel.core;
 
-public class Game {
+public abstract class  Game {
 	public void run() {
 	    while (true) {
 	        render();
@@ -8,16 +8,15 @@ public class Game {
 	        update();
 	    }
 	}
+	//Die render()-Methode stellt jeweils den Spielzustand auf dem Ausgabemedium dar,
+	public abstract void render();
 
-	private void update() {
+	//Die Methode processInput() verarbeitet Benutzereingaben 
+	public abstract void processInput();
+
+	//Die Methode update() verändert (ggf. unter Berücksichtigung der Eingabe) den aktuellen Spielzustand
+	public void update() {
 		
 	}
-
-	private void processInput() {
-		
-	}
-
-	private void render() {
-		
-	}
+	
 }
