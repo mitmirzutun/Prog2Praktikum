@@ -32,7 +32,6 @@ public class Wall extends Entity {
 		return o instanceof Wall?this.toString().equals(o.toString()):false;
 	}
 	public void nextStep() {
-	}
-	public static void main(String[] args) {
+		//nichts unzerstörbar und kannn sich nicht bewegen.
 	}
 }
