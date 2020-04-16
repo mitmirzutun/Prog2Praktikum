@@ -1,6 +1,12 @@
 package de.hsa.games.fatsquirrel.core;
 
+import java.util.Random;
+
 import de.hsa.games.fatsquirrel.entity.Entity;
+import de.hsa.games.fatsquirrel.entity.beast.BadBeast;
+import de.hsa.games.fatsquirrel.entity.beast.GoodBeast;
+import de.hsa.games.fatsquirrel.entity.plant.BadPlant;
+import de.hsa.games.fatsquirrel.entity.plant.GoodPlant;
 import de.hsa.games.fatsquirrel.entity.wall.Wall;
 import de.hsa.games.fatsquirrel.position.XY;
 
@@ -10,7 +16,7 @@ public class Board extends BoardConfig {
 	private int anzahlEntity = 0; //anzahl an Entity
 //ich habe die vielen Constructoren rausgeschmissen da alle eigenschaften von der BordConfig klasse kommen sollen
 	Board(){
-		data = new Entity[2x+2y+goodPlant+badPlant+wall+goodBeast+badBeast];//ich habe das geändert weil wir die position ja schon in der klasse selber speicher und weil die aufgabenstellung sagt das nur die menge Menge der in der Landschaft vorhandenen Entities dastehen solll.
+		data = new Entity[2*x+2*y+goodPlant+badPlant+wall+goodBeast+badBeast];//ich habe das geändert weil wir die position ja schon in der klasse selber speicher und weil die aufgabenstellung sagt das nur die menge Menge der in der Landschaft vorhandenen Entities dastehen solll.
 		//Umrandet spielfeld mit Mauern
 		for (int i=0; i<x; i++) {
 			data[anzahlEntity]=new Wall(new XY(i,0));anzahlEntity++;
@@ -48,7 +54,7 @@ public class Board extends BoardConfig {
 			throw new ArrayIndexOutOfBoundsException(x);
 		if (y<0||y>this.y)
 			throw new ArrayIndexOutOfBoundsException(y);
-		return data[x][y];
+		return data[x*2+y*2];
 	}
 	public void setEntity(Entity e, int x, int y) {
 		if (x<0||x>this.x)
@@ -57,11 +63,11 @@ public class Board extends BoardConfig {
 			throw new ArrayIndexOutOfBoundsException(y);
 		if(e==null)
 			throw new NullPointerException();
-		if (data[x][y]==null) {
-			data[x][y]=e;
+		if (data[x+y]==null) {
+			data[x+y]=e;
 			return;
 		}
-		if (data[x][y] instanceof de.hsa.games.fatsquirrel.entity.wall.Wall)
+		if (data[x+y] instanceof de.hsa.games.fatsquirrel.entity.wall.Wall)
 			return;
 	}
 }
