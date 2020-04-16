@@ -1,3 +1,5 @@
+package de.hsa.games.fatsquirrel.board;
+
 //Konfigurationsdaten für die Initialisierung des Spiels benötigt
 public class BoardConfig{
 	protected final int x = 100, y = 100; //Größe des Spielfeldes
