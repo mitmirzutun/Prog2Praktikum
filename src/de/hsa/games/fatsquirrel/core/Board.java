@@ -12,41 +12,64 @@ import de.hsa.games.fatsquirrel.position.XY;
 
 //Board hält alle Informationen über die Spiellandschaft
 public class Board extends BoardConfig {
-	private Entity[] data; //Objekte des Spielfeldes
+	private Entity[][] data; //Objekte des Spielfeldes
 	private int anzahlEntity = 0; //anzahl an Entity
-//ich habe die vielen Constructoren rausgeschmissen da alle eigenschaften von der BordConfig klasse kommen sollen
 	Board(){
-		data = new Entity[2*x+2*y+goodPlant+badPlant+wall+goodBeast+badBeast];//ich habe das geändert weil wir die position ja schon in der klasse selber speicher und weil die aufgabenstellung sagt das nur die menge Menge der in der Landschaft vorhandenen Entities dastehen solll.
-		//Umrandet spielfeld mit Mauern
+		data = new Entity[x][y];
 		for (int i=0; i<x; i++) {
-			data[anzahlEntity]=new Wall(new XY(i,0));anzahlEntity++;
-			data[anzahlEntity]=new Wall(new XY(i,y));anzahlEntity++;
-			data[anzahlEntity]=new Wall(new XY(0,i));anzahlEntity++;
-			data[anzahlEntity]=new Wall(new XY(x,i));anzahlEntity++;
+			data[i][0]=new Wall(new XY(i,0));anzahlEntity++;
+			data[i][y]=new Wall(new XY(i,y));anzahlEntity++;
+			data[0][i]=new Wall(new XY(0,i));anzahlEntity++;
+			data[x][i]=new Wall(new XY(x,i));anzahlEntity++;
 		}
 		//Verteilt zufällig entity
 		 Random zufall = new Random();
+		 int wunsch_x=0, wunsch_y=0;
 		 for (int i=0; i<goodPlant ;i++ ) {
-		 	data[anzahlEntity]=new GoodPlant(new XY(zufall.nextInt()%x, zufall.nextInt()%y));
+		 	wunsch_x=zufall.nextInt()%x;
+		 	wunsch_y=zufall.nextInt()%y;
+		 	if (data[x][y] == null){
+		 	data[wunsch_x][wunsch_y]=new GoodPlant(new XY(wunsch_x, wunsch_y));
 		 	anzahlEntity++;
 		 }
+		 else{i--;}
+		}
 		 for (int i=0; i<badPlant ;i++ ) {
-		 	data[anzahlEntity]=new BadPlant(new XY(zufall.nextInt()%x, zufall.nextInt()%y));
+		 	wunsch_x=zufall.nextInt()%x;
+		 	wunsch_y=zufall.nextInt()%y;
+		 	if (data[x][y] == null){
+		 	data[wunsch_x][wunsch_y]=new BadPlant(new XY(wunsch_x, wunsch_y));
 		 	anzahlEntity++;
 		 }
-		 for (int i=0; i<goodBeast ;i++ ) {
-		 	data[anzahlEntity]=new GoodBeast(new XY(zufall.nextInt()%x, zufall.nextInt()%y));
-		 	anzahlEntity++;
-		 }
-		 for (int i=0; i<badBeast ;i++ ) {
-		 	data[anzahlEntity]=new BadBeast(new XY(zufall.nextInt()%x, zufall.nextInt()%y));
-		 	anzahlEntity++;
-		 }
+		 else{i--;}
+		}
 		 for (int i=0; i<wall ;i++ ) {
-		 	data[anzahlEntity]=new Wall(new XY(zufall.nextInt()%x, zufall.nextInt()%y));
+		 	wunsch_x=zufall.nextInt()%x;
+		 	wunsch_y=zufall.nextInt()%y;
+		 	if (data[x][y] == null){
+		 	data[wunsch_x][wunsch_y]=new Wall(new XY(wunsch_x, wunsch_y));
 		 	anzahlEntity++;
 		 }
-
+		 else{i--;}
+		}
+		 for (int i=0; i<badBeast ;i++ ) {
+		 	wunsch_x=zufall.nextInt()%x;
+		 	wunsch_y=zufall.nextInt()%y;
+		 	if (data[x][y] == null){
+		 	data[wunsch_x][wunsch_y]=new BadBeast(new XY(wunsch_x, wunsch_y));
+		 	anzahlEntity++;
+		 }
+		 else{i--;}
+		}
+		 for (int i=0; i<goodBeast ;i++ ) {
+		 	wunsch_x=zufall.nextInt()%x;
+		 	wunsch_y=zufall.nextInt()%y;
+		 	if (data[x][y] == null){
+		 	data[wunsch_x][wunsch_y]=new GoodBeast(new XY(wunsch_x, wunsch_y));
+		 	anzahlEntity++;
+		 }
+		 else{i--;}
+		}
 	}
 
 	public Entity entityAtPos(int x,int y) {
@@ -54,7 +77,7 @@ public class Board extends BoardConfig {
 			throw new ArrayIndexOutOfBoundsException(x);
 		if (y<0||y>this.y)
 			throw new ArrayIndexOutOfBoundsException(y);
-		return data[x*2+y*2];
+		return data[x][y];
 	}
 	public void setEntity(Entity e, int x, int y) {
 		if (x<0||x>this.x)
@@ -63,11 +86,14 @@ public class Board extends BoardConfig {
 			throw new ArrayIndexOutOfBoundsException(y);
 		if(e==null)
 			throw new NullPointerException();
-		if (data[x+y]==null) {
-			data[x+y]=e;
+		if (data[x][y]==null) {
+			data[x][y]=e;
 			return;
 		}
-		if (data[x+y] instanceof de.hsa.games.fatsquirrel.entity.wall.Wall)
+		if (data[x][y] instanceof de.hsa.games.fatsquirrel.entity.wall.Wall)
 			return;
+	}
+	public Entity flatten(){
+		return null;
 	}
 }
