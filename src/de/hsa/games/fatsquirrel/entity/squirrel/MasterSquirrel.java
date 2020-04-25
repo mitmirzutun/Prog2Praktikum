@@ -35,6 +35,6 @@ public class MasterSquirrel extends Squirrel {
 		return o instanceof MasterSquirrel?this.toString().equals(o.toString()):false;
 	}
 	public void nextStep() {
-		
+				
 	}
 }
