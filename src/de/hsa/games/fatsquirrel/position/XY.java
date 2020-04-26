@@ -1,10 +1,10 @@
 package de.hsa.games.fatsquirrel.position;
 
 public class XY {
-	private long x,y;
+	private int x,y;
 	public static XY NULL;
-	private boolean firstSetup=false;
-	public XY(long x,long y) throws Exception {
+	private static boolean firstSetup=false;
+	public XY(int x,int y) throws Exception {
 		if (!firstSetup) {
 			firstSetup=true;
 			NULL=new XY(0,0);
@@ -28,10 +28,10 @@ public class XY {
 		sb.append(y);
 		return sb.toString();
 	}
-	public long getX() {
+	public int getX() {
 		return x;
 	}
-	public long getY() {
+	public int getY() {
 		return y;
 	}
 	public XY clone() {

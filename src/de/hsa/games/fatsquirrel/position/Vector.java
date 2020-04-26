@@ -1,8 +1,17 @@
 package de.hsa.games.fatsquirrel.position;
 
 public class Vector {
-	private long x, y;
-	public Vector(long x, long y) throws Exception {
+	private int x, y;
+	public static  Vector UP,DOWN,LEFT,RIGHT;
+	private static boolean firstSetup=false;
+	public Vector(int x, int y) throws Exception {
+		if (!firstSetup) {
+			UP=new Vector(-1,0);
+			DOWN=new Vector(1,0);
+			LEFT=new Vector(0,-1);
+			RIGHT=new Vector(0,1);
+			firstSetup=true;
+		}
 		if (x>1||x<-1)
 			throw new Exception("Invalid x value: "+x);
 		if (y>1||y<-1)
@@ -22,10 +31,10 @@ public class Vector {
 		sb.append(y);
 		return sb.toString();
 	}
-	public long getX() {
+	public int getX() {
 		return x;
 	}
-	public long getY() {
+	public int getY() {
 		return y;
 	}
 }

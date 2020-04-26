@@ -1,13 +1,14 @@
-package de.hsa.games.fatsquirrel.entity.squirrel;
+package de.hsa.games.fatsquirrel.entity.movable.squirrel;
 
+import de.hsa.games.fatsquirrel.entity.movable.Movable;
 import de.hsa.games.fatsquirrel.position.XY;
 
-public class MasterSquirrel extends Squirrel {
-	public MasterSquirrel(long x, long y) {
-		super(1000, x, y);
+public class MasterSquirrel extends Movable {
+	public MasterSquirrel(int x, int y) {
+		super(x, y,1000);
 	}
 	public MasterSquirrel(XY pos) {
-		super(1000,pos);
+		super(pos,1000);
 	}
 	public String toString() {
 		StringBuilder sb=new StringBuilder();

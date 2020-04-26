@@ -1,14 +1,15 @@
-package de.hsa.games.fatsquirrel.entity.squirrel;
+package de.hsa.games.fatsquirrel.entity.movable.squirrel;
 
+import de.hsa.games.fatsquirrel.entity.movable.Movable;
 import de.hsa.games.fatsquirrel.position.XY;
 
-public class MiniSquirrel extends Squirrel {
+public class MiniSquirrel extends Movable {
 
-	public MiniSquirrel(long energy, long x, long y) {
-		super(energy, x, y);
+	public MiniSquirrel(long energy, int x, int y) {
+		super(x, y,energy);
 	}
 	public MiniSquirrel(long energy, XY pos) {
-		super(energy, pos);
+		super(pos,energy);
 	}
 	public String toString() {
 		StringBuilder sb=new StringBuilder();
