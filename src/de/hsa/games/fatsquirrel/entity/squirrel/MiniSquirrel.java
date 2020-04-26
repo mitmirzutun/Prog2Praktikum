@@ -2,17 +2,19 @@ package de.hsa.games.fatsquirrel.entity.squirrel;
 
 import de.hsa.games.fatsquirrel.position.XY;
 
-public class MasterSquirrel extends Squirrel {
-	public MasterSquirrel(long x, long y) {
-		super(1000, x, y);
+public class MiniSquirrel extends Squirrel {
+
+	public MiniSquirrel(long energy, long x, long y) {
+		super(energy, x, y);
 	}
-	public MasterSquirrel(XY pos) {
-		super(1000,pos);
+	public MiniSquirrel(long energy, XY pos) {
+		super(energy, pos);
 	}
 	public String toString() {
 		StringBuilder sb=new StringBuilder();
-		sb.append("MasterSquirrel on ");
+		sb.append("MiniSquirrel on ");
 		sb.append(getPos().toString());
 		return sb.toString();
 	}
+
 }
