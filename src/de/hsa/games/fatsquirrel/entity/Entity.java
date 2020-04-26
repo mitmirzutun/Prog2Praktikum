@@ -1,49 +1,38 @@
 package de.hsa.games.fatsquirrel.entity;
 
-import java.math.BigInteger;
-import de.hsa.games.fatsquirrel.position.XY;
+import java.util.InvalidPropertiesFormatException;
+
+import de.hsa.games.fatsquirrel.position.*;
 
 public abstract class Entity {
-	protected BigInteger energy;
-	protected XY position;
-	protected boolean constPosition;
-
-
-	//setEnergy
-	public final void setEnergy(long energy) {
-		this.energy=BigInteger.valueOf(energy);
+	private boolean constPos;
+	private XY pos;
+	private long energy;
+	public abstract String toString();
+	public void nextStep(Vector vector) throws Exception{
+		if (constPos)
+			throw new InvalidPropertiesFormatException("This Entity is not movable.");
+		pos=new XY(pos.getX()+vector.getX(),pos.getY()+vector.getY());
 	}
-
-	//setPosition
-	public void setPosition(long x, long y) {
-		if (constPosition)
-			throw new NoSuchMethodError("The Method setPosition(long, long) is undefined");
-		position=new XY(x,y);
+	public void updateEnergy(long energy) {
+		this.energy+=energy;
 	}
-	public void setPosition(XY pos) {
-		if (constPosition)
-			throw new NoSuchMethodError("The Method setPosition(XY) is undefined");
-		position=new XY(pos);
+	public void setup(boolean constPos,XY pos, long energy) {
+		this.constPos=constPos;
+		this.pos=pos;
+		this.energy=energy;
 	}
-
-	//getFunktions
-	public final BigInteger getEnergy() {
+	public void setup(boolean constPos,long x,long y, long energy) {
+		try {
+			setup(constPos,new XY(x,y),energy);
+		} catch (Exception e) {
+			System.out.println("Setup failed.");
+		}
+	}
+	public XY getPos() {
+		return pos;
+	}
+	public long getEnergy() {
 		return energy;
 	}
-	public final XY getPosition() {
-		return position.clone();
-	}
-	public final BigInteger getX() {
-		return position.getX();
-	}
-	public final BigInteger getY() {
-		return position.getY();
-	}
-	public final int length() {
-		return this.toString().length();
-	}
-	public abstract String toString();
-	public abstract Entity clone();
-	public abstract boolean equals(Object o);
-	public abstract void nextStep();
 }
